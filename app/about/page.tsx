@@ -1,3 +1,5 @@
+import { SectionNumber } from "@/components/SectionNumber";
+
 export const metadata = {
   title: "About",
 };
@@ -5,9 +7,9 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:px-8">
-      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-signal">About</p>
+      <SectionNumber number="01" label="About" />
       <h1 className="mt-4 text-4xl font-bold text-white">A personal study system turned into a practical product.</h1>
-      <div className="mt-8 space-y-5 text-base leading-8 text-mist">
+      <div className="mt-8 space-y-5 border-y border-line py-8 text-base leading-8 text-mist">
         <p>
           System Design Mastery is built from the kind of notes a developer makes when preparing for senior interviews:
           direct prompts, weak answers, stronger answers, trade-offs, examples, and checklists.

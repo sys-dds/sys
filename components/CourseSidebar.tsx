@@ -11,7 +11,7 @@ type CourseSidebarProps = {
 
 export function CourseSidebar({ notes, activeSlug }: CourseSidebarProps) {
   return (
-    <aside className="rounded-lg border border-line bg-panel p-4 lg:sticky lg:top-24">
+    <aside className="rounded-lg border border-line bg-ink/80 p-4 lg:sticky lg:top-24">
       <div>
         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-signal">Track</p>
         <div className="mt-3 flex items-center justify-between gap-3">

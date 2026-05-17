@@ -1,13 +1,12 @@
 import Link from "next/link";
+import { SectionNumber } from "./SectionNumber";
 
 export function Hero() {
   return (
     <section className="border-b border-line">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-24">
         <div>
-          <p className="mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-signal">
-            Frontend System Design for Senior Interviews
-          </p>
+          <SectionNumber number="01" label="Frontend System Design for Senior Interviews" />
           <h1 className="max-w-3xl text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
             Senior interview prep for experienced developers.
           </h1>
@@ -33,7 +32,7 @@ export function Hero() {
             If one answer helps you sound more senior in an interview, the £19 has already paid for itself.
           </p>
         </div>
-        <div className="rounded-lg border border-line bg-panel p-6 shadow-soft lg:mt-4">
+        <div className="rounded-lg border border-line bg-panel/80 p-6 lg:mt-4">
           <p className="text-sm font-semibold text-muted">What changes in your answers</p>
           <div className="mt-5 space-y-4">
             {[

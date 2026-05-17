@@ -31,6 +31,7 @@ Included in MVP 0.1:
 - About page
 - Changelog page
 - Source-controlled MDX notes in `content/notes`
+- SDM-002 impeccable-inspired dark docs/course redesign
 - SDM-002 course/sidebar layout
 - SDM-002 conversion copy and content quality polish
 
@@ -132,6 +133,6 @@ Expected behavior:
 
 ## Current Status
 
-SDM-002 adds the course/sidebar layout and improves homepage conversion copy, pricing value framing, note index guidance, free-note quality, and locked-preview quality.
+SDM-002 adds an impeccable-inspired dark docs/course redesign, course/sidebar layout, homepage conversion copy, pricing value framing, note index guidance, free-note quality, and locked-preview quality.
 
 The app still intentionally excludes auth, database, payments, deployment setup, analytics, search, and subscriptions.
