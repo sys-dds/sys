@@ -3,38 +3,41 @@ import { RoadmapCard } from "@/components/RoadmapCard";
 const tracks = [
   {
     title: "Frontend System Design",
+    status: "Active / In Progress" as const,
     summary: "Design resilient client experiences, component boundaries, state ownership, rendering strategy, and API contracts.",
     bullets: ["State placement", "Component APIs", "Rendering and caching"],
   },
   {
     title: "Backend System Design",
+    status: "Planned" as const,
     summary: "Reason about APIs, data models, scaling constraints, reliability, queues, consistency, and failure modes.",
     bullets: ["Data flow", "API shape", "Reliability trade-offs"],
   },
   {
     title: "DevOps / Production",
+    status: "Planned" as const,
     summary: "Build the vocabulary for deployment, observability, incident thinking, capacity, and operational readiness.",
     bullets: ["Monitoring", "Rollback plans", "Production debugging"],
   },
   {
     title: "Senior Interview Answers",
+    status: "Planned" as const,
     summary: "Turn rough instincts into structured answers that show trade-offs, constraints, ownership, and judgement.",
     bullets: ["Clarifying questions", "Option framing", "Decision narratives"],
   },
   {
     title: "Code Review Judgement",
+    status: "Planned" as const,
     summary: "Learn how seniors review for behavior, maintainability, performance, risk, and team context.",
     bullets: ["Risk spotting", "API review", "Maintainability language"],
   },
 ];
 
 const starterPlan = [
-  "Days 1-5: Server/client boundaries, state ownership, and component API design.",
-  "Days 6-10: Rendering model, data fetching, caching, and user-perceived performance.",
-  "Days 11-15: Backend APIs, data modeling, queues, consistency, and rate limits.",
-  "Days 16-20: Production basics, observability, rollback thinking, and debugging stories.",
-  "Days 21-25: Senior answer patterns, trade-off drills, and design walkthroughs.",
-  "Days 26-30: Mock prompts, code review judgement, and concise final answer practice.",
+  "Week 1: Frontend architecture and server/client boundaries",
+  "Week 2: State ownership, rendering, and data fetching",
+  "Week 3: Component API design, testing, accessibility, and performance",
+  "Week 4: Senior interview answers, code review, trade-offs, and proof pack",
 ];
 
 export default function RoadmapPage() {

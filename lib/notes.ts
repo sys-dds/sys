@@ -15,7 +15,6 @@ export type NoteMeta = {
 
 export type Note = NoteMeta & {
   content: string;
-  preview: string;
 };
 
 const notesDirectory = path.join(process.cwd(), "content", "notes");
@@ -48,19 +47,16 @@ function parseNote(fileName: string): Note {
     throw new Error(`Invalid frontmatter in ${fileName}`);
   }
 
-  const preview = content.split("\n## Senior answer")[0]?.trim() ?? content;
-
   return {
     ...data,
     content,
-    preview,
   };
 }
 
 export function getAllNotes(): NoteMeta[] {
   return getNoteFiles()
     .map(parseNote)
-    .map(({ content, preview, ...meta }) => meta)
+    .map(({ content, ...meta }) => meta)
     .sort((a, b) => a.order - b.order);
 }
 

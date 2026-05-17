@@ -34,11 +34,9 @@ export default async function NotePage({ params }: NotePageProps) {
     notFound();
   }
 
-  const content = note.status === "free" ? note.content : note.preview;
-
   return (
     <LessonLayout note={note}>
-      <MDXRemote source={content} />
+      <MDXRemote source={note.content} />
       {note.status === "locked" ? <PaywallBox /> : null}
     </LessonLayout>
   );

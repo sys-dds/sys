@@ -9,9 +9,10 @@ type PricingCardProps = {
   href: string;
   cta: string;
   featured?: boolean;
+  disabled?: boolean;
 };
 
-export function PricingCard({ name, price, description, features, href, cta, featured }: PricingCardProps) {
+export function PricingCard({ name, price, description, features, href, cta, featured, disabled }: PricingCardProps) {
   return (
     <article className={`rounded-lg border p-6 ${featured ? "border-signal bg-signal/10" : "border-line bg-panel"}`}>
       <div className="flex items-center justify-between gap-4">
@@ -28,12 +29,22 @@ export function PricingCard({ name, price, description, features, href, cta, fea
           </li>
         ))}
       </ul>
-      <Link
-        href={href || "/pricing"}
-        className="mt-8 inline-flex w-full items-center justify-center rounded-md bg-white px-4 py-3 text-sm font-bold text-ink transition hover:bg-mist"
-      >
-        {cta}
-      </Link>
+      {disabled ? (
+        <button
+          type="button"
+          disabled
+          className="mt-8 inline-flex w-full cursor-not-allowed items-center justify-center rounded-md bg-muted px-4 py-3 text-sm font-bold text-ink"
+        >
+          {cta}
+        </button>
+      ) : (
+        <Link
+          href={href}
+          className="mt-8 inline-flex w-full items-center justify-center rounded-md bg-white px-4 py-3 text-sm font-bold text-ink transition hover:bg-mist"
+        >
+          {cta}
+        </Link>
+      )}
     </article>
   );
 }
