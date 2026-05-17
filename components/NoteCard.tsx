@@ -7,8 +7,8 @@ export function NoteCard({ note, emphasis = false }: { note: NoteMeta; emphasis?
 
   return (
     <article
-      className={`rounded-lg border p-4 transition hover:border-mist/50 ${
-        emphasis ? "border-signal/50 bg-signal/10" : "border-line bg-panel/80"
+      className={`border p-4 transition hover:border-mist/50 ${
+        emphasis ? "border-signal/50 bg-signal/10" : "border-line bg-surface/55"
       }`}
     >
       <div className="flex flex-wrap items-center gap-2">
@@ -21,7 +21,7 @@ export function NoteCard({ note, emphasis = false }: { note: NoteMeta; emphasis?
         </Link>
       </h2>
       <p className="mt-3 text-sm leading-6 text-muted">{note.summary}</p>
-      <Link href={`/notes/${note.slug}`} className="mt-5 inline-flex text-sm font-semibold text-signal hover:text-white focus:outline-none focus:ring-2 focus:ring-line">
+      <Link href={`/notes/${note.slug}`} className="mt-5 inline-flex text-sm font-semibold text-signal hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-signal/40">
         {isFree ? "Read complete sample" : "Read preview"}
       </Link>
     </article>

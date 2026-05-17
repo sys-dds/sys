@@ -9,10 +9,13 @@ type PreviousNextNoteNavProps = {
 
 function NoteLink({ note, direction }: { note: NoteMeta; direction: "Previous" | "Next" }) {
   return (
-    <Link href={`/notes/${note.slug}`} className="rounded-lg border border-line bg-panel/80 p-4 transition hover:border-mist/50 focus:outline-none focus:ring-2 focus:ring-line">
-      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">{direction}</span>
-      <span className="mt-2 block text-base font-bold text-white">{note.title}</span>
-      <span className="mt-3 block">
+    <Link
+      href={`/notes/${note.slug}`}
+      className="block border-t border-line py-4 transition hover:border-mist/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-signal/40"
+    >
+      <span className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">{direction}</span>
+      <span className="mt-1 block text-sm font-semibold text-white">{note.title}</span>
+      <span className="mt-2 block">
         <Badge tone={note.status === "free" ? "free" : "locked"}>{note.status === "free" ? "Free" : "Locked"}</Badge>
       </span>
     </Link>
@@ -21,7 +24,7 @@ function NoteLink({ note, direction }: { note: NoteMeta; direction: "Previous" |
 
 export function PreviousNextNoteNav({ previous, next }: PreviousNextNoteNavProps) {
   return (
-    <nav className="mt-12 grid gap-4 border-t border-line pt-8 sm:grid-cols-2" aria-label="Previous and next notes">
+    <nav className="mt-10 grid gap-5 sm:grid-cols-2" aria-label="Previous and next notes">
       {previous ? <NoteLink note={previous} direction="Previous" /> : <div />}
       {next ? <NoteLink note={next} direction="Next" /> : <div />}
     </nav>

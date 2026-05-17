@@ -14,14 +14,14 @@ type PricingCardProps = {
 
 export function PricingCard({ name, price, description, features, href, cta, featured, disabled }: PricingCardProps) {
   return (
-    <article className={`rounded-lg border p-5 ${featured ? "border-signal bg-signal/10" : "border-line bg-panel/80"}`}>
+    <article className={`border p-5 ${featured ? "border-signal/70 bg-signal/10" : "border-line bg-surface/55"}`}>
       <div className="flex items-center justify-between gap-4">
         <h2 className="text-xl font-bold text-white">{name}</h2>
         {featured ? <Badge tone="free">Best start</Badge> : null}
       </div>
-      <p className="mt-4 font-mono text-4xl font-semibold text-white">{price}</p>
+      <p className="mt-4 font-mono text-3xl font-semibold text-white">{price}</p>
       <p className="mt-3 min-h-12 text-sm leading-6 text-muted">{description}</p>
-      <ul className="mt-6 space-y-3 text-sm text-mist">
+      <ul className="mt-5 space-y-2.5 text-sm text-mist">
         {features.map((feature) => (
           <li key={feature} className="flex gap-3">
             <span className="mt-2 h-1.5 w-1.5 rounded-full bg-signal" />
@@ -33,14 +33,14 @@ export function PricingCard({ name, price, description, features, href, cta, fea
         <button
           type="button"
           disabled
-          className="mt-7 inline-flex w-full cursor-not-allowed items-center justify-center rounded-md border border-ember/40 bg-ember/20 px-4 py-3 text-sm font-bold text-ember"
+          className="mt-6 inline-flex w-full cursor-not-allowed items-center justify-center rounded-md border border-ember/40 bg-ember/10 px-4 py-2.5 text-sm font-bold text-ember"
         >
           {cta}
         </button>
       ) : (
         <Link
           href={href}
-          className="mt-7 inline-flex w-full items-center justify-center rounded-md bg-white px-4 py-3 text-sm font-bold text-ink transition hover:bg-mist focus:outline-none focus:ring-2 focus:ring-white/40"
+          className="mt-6 inline-flex w-full items-center justify-center rounded-md bg-white px-4 py-2.5 text-sm font-bold text-ink transition hover:bg-mist focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
         >
           {cta}
         </Link>

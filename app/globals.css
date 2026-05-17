@@ -4,7 +4,7 @@
 
 :root {
   color-scheme: dark;
-  background: #0b0e12;
+  background: #0b0f12;
 }
 
 * {
@@ -18,8 +18,8 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 22% 0%, rgba(114, 225, 200, 0.055), transparent 28rem),
-    linear-gradient(180deg, #0b0e12 0%, #10141a 44%, #0c0f13 100%);
+    radial-gradient(circle at 24% 0%, rgba(114, 225, 200, 0.035), transparent 24rem),
+    linear-gradient(180deg, #0b0f12 0%, #0f1419 50%, #0b0f12 100%);
   color: #edf3f8;
 }
 
@@ -37,11 +37,11 @@ a {
 }
 
 .lesson-content h2 {
-  margin-top: 2.25rem;
-  border-top: 1px solid #2a313a;
-  padding-top: 1.5rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(42, 49, 58, 0.72);
+  padding-top: 1.25rem;
   color: #f4f7fb;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: 0;
 }
@@ -54,8 +54,8 @@ a {
 }
 
 .lesson-content p {
-  margin-top: 1.1rem;
-  line-height: 1.85;
+  margin-top: 1rem;
+  line-height: 1.8;
 }
 
 .lesson-content ul,
@@ -65,8 +65,8 @@ a {
 }
 
 .lesson-content li {
-  margin-top: 0.6rem;
-  line-height: 1.75;
+  margin-top: 0.5rem;
+  line-height: 1.7;
 }
 
 .lesson-content strong {

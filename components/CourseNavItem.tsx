@@ -15,14 +15,14 @@ export function CourseNavItem({ note, activeSlug }: CourseNavItemProps) {
     <Link
       href={`/notes/${note.slug}`}
       aria-current={isActive ? "page" : undefined}
-      className={`block rounded-md border px-3 py-2.5 transition focus:outline-none focus:ring-2 focus:ring-line ${
+      className={`group flex items-center justify-between gap-3 border-l px-2.5 py-1.5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-signal/40 ${
         isActive
           ? "border-signal bg-signal/10 text-white"
-          : "border-transparent text-muted hover:border-line hover:bg-ink/50 hover:text-white"
+          : "border-transparent text-muted hover:border-line hover:bg-surface/60 hover:text-white"
       }`}
     >
-      <span className="block text-sm font-semibold leading-5">{note.title}</span>
-      <span className="mt-2 block">
+      <span className="min-w-0 text-xs font-medium leading-5">{note.title}</span>
+      <span className="shrink-0 scale-90 opacity-85">
         <Badge tone={isFree ? "free" : "locked"}>{isFree ? "Free" : "Locked"}</Badge>
       </span>
     </Link>
