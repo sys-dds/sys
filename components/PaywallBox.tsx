@@ -5,8 +5,8 @@ export function PaywallBox() {
     <aside className="mt-10 rounded-lg border border-ember/40 bg-ember/10 p-6">
       <h2 className="text-xl font-bold text-white">Continue with the full note</h2>
       <p className="mt-3 text-sm leading-6 text-mist">
-        This locked note is preview-only in MVP 0.1. Early Access will unlock deeper notes, checklists, bad-vs-good
-        examples, interview answer patterns, practice tasks, and future MVP updates.
+        This preview is useful by design, but the full Early Access pack will go deeper with decision trees,
+        bad-vs-good answer examples, checklists, practice tasks, and interview-ready templates.
       </p>
       <Link
         href="/pricing"

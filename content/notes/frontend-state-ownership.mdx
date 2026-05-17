@@ -13,33 +13,70 @@ You are building a complex product page with filters, tabs, forms, and fetched d
 
 ## Weak answer
 
-I would put shared state in a global store and local state in components. If it gets complicated, I would use Redux or Zustand.
+I would put shared state in Context or a global store so every component can access it. Local state can stay in components. If the app grows, I would use Redux or Zustand.
+
+This answer jumps to storage before ownership. In senior interviews, the important question is not "which library stores state?" It is "who owns this fact, how long should it live, and what breaks if it gets out of sync?"
 
 ## Senior answer
 
-I would decide based on who needs to read the state, who owns changes to it, and whether it should survive refresh or navigation. State that represents navigation or shareable views belongs in the URL, such as filters, selected tabs, and pagination. Server-derived data belongs in the server cache or data-fetching layer. Form drafts usually belong near the form until they are submitted. Tiny visual state, like a dropdown being open, should stay local.
+I would classify the state by lifetime, ownership, and sharing requirements.
 
-I would reach for global client state only when multiple distant parts of the tree need coordinated updates that are not already represented by URL or server data.
+URL state should represent the user's current view: filters, sort order, selected tab, pagination, and sometimes search text. If the user expects refresh, back button, or link sharing to preserve it, the URL is usually the owner.
+
+Server/cache state should represent facts loaded from the backend: issue data, permissions, account status, invoices, comments, or feature flags. I would avoid copying those facts into component state unless I am creating a temporary draft or optimistic layer with a clear rollback path.
+
+Local UI state should stay close to the component: dropdown open state, hover-driven UI, accordion expansion, modal visibility, and temporary input drafts. Form state belongs near the form until submission, especially if it has validation or dirty-state behavior.
+
+App-wide client state is useful when multiple distant parts of the tree need coordinated client-only behavior that is not naturally URL state or server state. I would use it deliberately, not as the default.
+
+I would also ask about update frequency. A value that changes on every keystroke can become expensive if it is pushed through a broad provider. A value that changes rarely, like the active workspace id, can be safe to share broadly. State ownership is partly about correctness and partly about limiting the blast radius of updates.
 
 ## Why this sounds senior
 
-It avoids choosing a library before defining ownership. The answer explains persistence, sharing, synchronization, and blast radius. It also shows restraint: global state is a tool, not a default.
+It shows that state placement is a product and correctness decision, not just a library preference. The answer considers persistence, sharing, refresh behavior, synchronization, and update frequency.
+
+It also avoids a common mid-level trap: putting server facts into global client state, then manually keeping them in sync with fetches, mutations, and route changes.
 
 ## Practical example
 
-For an issue tracker, query text, status filter, assignee, and page number should live in the URL. The issue list should come from the server or query cache. The inline edit draft should live in the row or form. A sidebar collapse preference might live in local storage if it should persist for that user.
+For an issue tracker:
+
+- Query text, status filter, assignee filter, sort, and page number belong in the URL.
+- Issue list data belongs in the server response or query cache.
+- The "edit title" draft belongs in the row or edit form until saved.
+- A newly created comment may use optimistic state if rollback is simple.
+- The current user's permission set should come from server/cache state, not a random global store.
+- A sidebar collapsed preference can live in local storage if it should persist for that user on that device.
+
+If the interviewer asks about Context, I would say Context is useful for stable shared values like theme, current workspace shell state, or dependency injection. It is not a free answer for high-frequency updates or server data duplication.
+
+For a product detail page, the selected image could be local state, selected variant could be URL state if shareable, inventory should be server/cache state, and an unsaved review draft should stay with the form. Those distinctions matter because each value has a different lifetime and failure mode.
 
 ## Checklist
 
 - Put shareable navigation state in the URL.
 - Keep fetched entities in the data layer, not duplicated in component state.
 - Keep temporary form drafts close to the form.
+- Keep tiny visual state local.
 - Use global client state only for genuinely shared client concerns.
-- Avoid syncing the same fact across multiple state owners.
+- Define what happens on refresh and back/forward navigation.
+- Avoid syncing the same fact across multiple owners.
+- Be careful with Context for high-frequency updates.
 
 ## Practice task
 
-Pick a screen with at least five pieces of state. Label each as URL, server data, local component state, global client state, or persistent preference.
+Pick a screen with at least five pieces of state. Label each one:
+
+1. URL state
+2. Server/cache state
+3. Local UI state
+4. Form draft state
+5. App-wide client state
+6. Persistent preference
+
+Then choose one state value and explain why moving it somewhere else would create bugs or complexity.
+
+For extra practice, answer the same prompt twice: once for a small internal tool and once for a public ecommerce page. Notice how the state ownership changes when shareability, SEO, refresh behavior, and user expectations change.
 
 ## Final mental model
 

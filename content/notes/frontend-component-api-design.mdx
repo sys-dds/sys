@@ -13,34 +13,74 @@ How would you design a reusable modal, table, or card component for a growing pr
 
 ## Weak answer
 
-I would make it reusable by adding props for all the options designers might need. If a new use case appears, I would add another prop.
+I would make it reusable by adding props for all the options designers might need. If a new use case appears, I would add another prop. That way one component can handle everything.
+
+This sounds productive at first, but it often creates a component nobody understands. A large prop list can hide invalid combinations, domain-specific behavior, accessibility gaps, and visual modes that should never coexist.
 
 ## Senior answer
 
-I would design the API around stable responsibilities, not every possible visual variation. A modal should own accessibility, focus management, escape behavior, layout constraints, and close semantics. The caller should own the title, content, primary action, and domain-specific copy. For complex components, I would prefer composition when the use cases are structurally different, and explicit props when the variations are small and well-defined.
+I would design the API around stable responsibilities, not every possible visual variation.
 
-I would also decide which props are controlled, which have defaults, and which combinations are invalid. A senior component API makes correct usage easy and awkward usage visible.
+For a modal, the reusable component should own the primitive behavior: accessible dialog markup, focus management, escape key handling, scroll locking if needed, close semantics, title/description wiring, and layout constraints. The caller should own domain-specific content: copy, form fields, destructive action wording, and what happens after submit.
+
+For simple variation, explicit props are fine: `size`, `title`, `description`, `open`, `onOpenChange`. For large structural variation, I would prefer composition: header, body, footer, actions, and children. If a use case has business rules, I would wrap the primitive in a domain component such as `CancelPlanDialog` or `InviteTeamMemberDialog`.
+
+I would also define controlled versus uncontrolled behavior. If the parent needs to coordinate the modal with route changes, analytics-free event handling, or form submission, `open` and `onOpenChange` should be explicit. If the component owns a tiny internal detail, it can keep that state private.
+
+Finally, I would document the intended extension points. A reusable component should make the common path easy, but it should also tell future engineers where to customize behavior without changing the primitive every week.
+
+That documentation does not need to be heavy. A few examples of intended usage can prevent months of prop creep.
 
 ## Why this sounds senior
 
-It talks about responsibility boundaries, invalid states, accessibility, and future change. It avoids making reusability mean "add more props forever."
+It separates primitive responsibility from product responsibility. It shows that reusability is not "one component with infinite props"; it is a clear contract that makes correct usage easy and awkward usage visible.
+
+It also mentions accessibility and invalid states. Senior frontend design includes how the component behaves for keyboard users, screen readers, destructive actions, async loading, and error cases.
 
 ## Practical example
 
-A `Dialog` can expose `open`, `onOpenChange`, `title`, `description`, and children for body content. It should not accept many one-off props like `isBillingDialog`, `showDangerSpacing`, or `specialHeaderMode`. If those appear, the team may need a domain wrapper such as `CancelPlanDialog`.
+A good `Dialog` API might expose:
+
+- `open`
+- `onOpenChange`
+- `title`
+- `description`
+- `children`
+- `footer`
+- `size`
+
+It should not collect one-off props like `isBillingDialog`, `showDangerSpacing`, `useSpecialHeader`, or `hideCloseForInviteFlow`. Those are signs that domain concerns are leaking into a generic primitive.
+
+For a table, the same principle applies. A generic table can own layout, column definitions, row keys, empty state slots, and loading state slots. It should not own billing-specific copy, issue-priority rules, or permission checks unless it is no longer a generic table.
+
+If the team repeatedly needs a table for invoices, that should become an `InvoiceTable` wrapper. The wrapper can know about due dates, invoice status, and download actions while the table primitive stays boring and reusable.
 
 ## Checklist
 
 - Name the responsibility the component owns.
 - Keep domain rules outside generic primitives.
+- Prefer explicit props for small, stable variation.
 - Prefer composition for large structural variation.
 - Make controlled state explicit.
 - Prevent invalid prop combinations where possible.
 - Include accessibility behavior in the component contract.
+- Add domain wrappers instead of stuffing business rules into primitives.
+- Review the API from the caller's perspective: what is easy, what is impossible, what is unclear?
 
 ## Practice task
 
-Take a component with more than ten props. Group the props by responsibility, then identify which should become composition, defaults, or a domain wrapper.
+Take a component with more than ten props. Group the props by responsibility:
+
+1. Behavior
+2. Layout
+3. Accessibility
+4. Domain rules
+5. Visual variation
+6. Async or error state
+
+Then identify which props should become composition, defaults, or a domain wrapper. In an interview, explain one prop you would remove and why.
+
+For extra practice, find one component where a boolean prop creates an invalid state, such as `isPrimary`, `isDanger`, and `isDisabled` all interacting. Replace the booleans with a smaller set of variants or a clearer domain wrapper.
 
 ## Final mental model
 

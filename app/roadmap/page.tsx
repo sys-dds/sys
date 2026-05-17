@@ -34,10 +34,10 @@ const tracks = [
 ];
 
 const starterPlan = [
-  "Week 1: Frontend architecture and server/client boundaries",
-  "Week 2: State ownership, rendering, and data fetching",
-  "Week 3: Component API design, testing, accessibility, and performance",
-  "Week 4: Senior interview answers, code review, trade-offs, and proof pack",
+  "Week 1: Server/client boundaries, state ownership, and component API judgement.",
+  "Week 2: Rendering model, data fetching, caching, loading/error/empty states.",
+  "Week 3: Testing, accessibility, performance, debugging, and review checklists.",
+  "Week 4: Mock interview answers, bad-vs-good explanations, and proof pack.",
 ];
 
 export default function RoadmapPage() {
@@ -45,9 +45,10 @@ export default function RoadmapPage() {
     <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-signal">Roadmap</p>
-        <h1 className="mt-4 text-4xl font-bold text-white">A focused path from feature builder to senior interview candidate.</h1>
+        <h1 className="mt-4 text-4xl font-bold text-white">A practical path from feature builder to senior interview candidate.</h1>
         <p className="mt-5 text-base leading-8 text-muted">
-          Use these tracks to study architecture judgement without pretending every topic needs a full course.
+          The first track is active now. The rest stay visible so the product direction is clear without pretending the
+          MVP is already a full LMS.
         </p>
       </div>
       <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -56,7 +57,10 @@ export default function RoadmapPage() {
         ))}
       </div>
       <section className="mt-14 rounded-lg border border-line bg-panel p-6">
-        <h2 className="text-2xl font-bold text-white">30-day starter plan</h2>
+        <h2 className="text-2xl font-bold text-white">First 30 days</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          A practical reading path for improving answer structure before adding more tracks.
+        </p>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {starterPlan.map((item) => (
             <div key={item} className="rounded-md border border-line bg-ink/40 p-4 text-sm leading-6 text-mist">
