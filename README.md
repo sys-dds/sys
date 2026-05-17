@@ -31,6 +31,7 @@ Included in MVP 0.1:
 - About page
 - Changelog page
 - Source-controlled MDX notes in `content/notes`
+- SDM-002 conversion copy and content quality polish
 
 ## 4. Stack
 
@@ -119,9 +120,14 @@ Expected behavior:
 
 ## 10. Future Roadmap
 
-- SDM-002 content hardening and landing-page polish
 - SDM-003 paid download pack
 - SDM-004 real checkout link setup
 - SDM-005 deploy to Cloudflare Pages later
 - SDM-006 auth/gated dashboard later
 - SDM-007 backend/devops/system design tracks later
+
+## Current Status
+
+SDM-002 improves homepage conversion copy, pricing value framing, note index guidance, free-note quality, and locked-preview quality.
+
+The app still intentionally excludes auth, database, payments, deployment setup, analytics, and subscriptions.

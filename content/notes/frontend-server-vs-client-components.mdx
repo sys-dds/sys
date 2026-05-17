@@ -13,34 +13,59 @@ You are designing a dashboard in Next.js. Which parts should be Server Component
 
 ## Weak answer
 
-I would use Server Components for performance and Client Components whenever I need interactivity. Server Components are faster because they render on the server.
+I would use Server Components for performance and Client Components whenever I need interactivity. Server Components are faster because they render on the server, so I would keep most of the page on the server and add client components for buttons and forms.
+
+This answer is not wrong, but it is too shallow for a senior interview. It sounds like the candidate knows the rule of thumb but has not thought through ownership, data flow, bundle size, or where the boundary creates complexity.
 
 ## Senior answer
 
-I would start by separating data access, stable layout, and interactive state. The dashboard shell, navigation, static summary sections, and data-loaded cards are good Server Component candidates because they can fetch close to the data source and avoid shipping unnecessary JavaScript. The filters, date picker, chart controls, optimistic actions, and any stateful widgets should be Client Components because they need browser state and event handlers.
+I would start by separating three responsibilities: data access, stable UI, and interaction. The dashboard shell, navigation, account summary, invoice list, and plan details are strong Server Component candidates because they can fetch close to the data source, avoid exposing server-only code to the browser, and keep unnecessary JavaScript out of the client bundle.
 
-The boundary should sit where the data becomes interactive. I would keep the server side responsible for fetching and shaping data, then pass serializable props into small client islands. That keeps the client bundle smaller and makes the data flow easier to reason about.
+The filters, date picker, chart controls, export flow, modal state, optimistic actions, and any browser-only behavior should be Client Components. Those parts need event handlers, local state, focus management, or browser APIs.
+
+The boundary should sit where server-loaded data becomes interactive. I would keep the server side responsible for fetching, authorization-aware shaping, and stable rendering. Then I would pass small serializable props into focused client islands. I would avoid making the whole dashboard a Client Component just because one filter or modal needs interactivity.
+
+I would also check whether the boundary makes the code easier to understand. A technically valid boundary can still be a bad product boundary if it forces awkward prop drilling, duplicates data, or hides important loading and error states.
 
 ## Why this sounds senior
 
-It names boundaries, trade-offs, and ownership. It does not treat Server Components as magic. It explains what stays on the server, what moves to the client, and why the boundary matters for bundle size, data access, and maintainability.
+It explains the decision model instead of repeating a slogan. The answer names what belongs on the server, what belongs in the browser, and what can go wrong if the boundary is too broad or too clever.
+
+It also shows production awareness. Server Components can help with bundle size and data access, but they do not remove the need to design loading states, error states, cache behavior, and clear ownership between server-rendered data and client-side interaction.
 
 ## Practical example
 
-A billing dashboard can render the account summary, invoices list, and plan details as Server Components. The invoice table filters, export button, and plan-change modal can be Client Components. The modal should receive the minimum data it needs rather than importing server-only code.
+Imagine a billing dashboard:
+
+- Server: page shell, customer account summary, plan details, invoice table, usage totals.
+- Client: invoice search input, date range picker, expandable row state, plan-change modal, export button, optimistic refresh state.
+
+The invoice table can be rendered from the server with the initial dataset. If filtering needs to be shareable, the filter state should probably live in the URL and cause a server refresh. If filtering is only a temporary client-side convenience over a small result set, a small Client Component can own it.
+
+The plan-change modal should receive only the plan options and current plan id it needs. It should not import server-only billing code or fetch secrets from the browser.
 
 ## Checklist
 
-- Keep data fetching and server-only libraries out of Client Components.
-- Put event handlers, browser APIs, and local state in Client Components.
+- Keep database access, secrets, and server-only libraries out of Client Components.
+- Use Server Components for stable UI and data-loaded sections.
+- Use Client Components for event handlers, local UI state, browser APIs, focus, and optimistic interaction.
 - Pass serializable props across the boundary.
-- Prefer small client islands over making the whole page a Client Component.
-- Check whether a boundary improves clarity, not only performance.
+- Prefer small client islands over making an entire page client-rendered.
+- Put shareable filters in the URL when users need refresh, back button, or link sharing.
+- Check loading, error, and empty states at the boundary.
+- Avoid duplicating the same server fact into long-lived client state without a reason.
 
 ## Practice task
 
-Take a page you have built recently and mark each component as server, client, or either. Then explain one boundary you would change and the trade-off it creates.
+Take a page you have built recently and draw a line through the component tree:
+
+1. Mark each component as server, client, or either.
+2. Pick one boundary you would change.
+3. Explain what improves: bundle size, data safety, interaction clarity, or maintainability.
+4. Name one downside of the change.
+
+If you can name both the upside and downside, your answer will sound more senior than simply saying "Server Components are faster."
 
 ## Final mental model
 
-Server Components own data and stable UI. Client Components own interaction. Senior judgement is choosing the smallest boundary that keeps both sides understandable.
+Server Components own data access and stable UI. Client Components own interaction. Senior judgement is choosing the smallest boundary that keeps data safe, interaction clear, and the codebase understandable.

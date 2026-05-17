@@ -26,8 +26,9 @@ export default function AboutPage() {
           Senior Interviews, with other system design tracks planned later.
         </p>
         <p>
-          MVP 0.1 is intentionally small. It focuses on content, structure, and useful reading paths before adding accounts,
-          payments, dashboards, search, analytics, or community features.
+          MVP 0.1 is intentionally small. The free notes prove the style before paid access exists. Early Access will fund
+          deeper examples, checklists, practice tasks, and answer patterns while keeping the product focused on judgement,
+          not memorisation.
         </p>
       </div>
     </div>

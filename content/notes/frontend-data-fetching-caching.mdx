@@ -39,6 +39,14 @@ Preview: A dashboard count can revalidate occasionally, while an issue title edi
 
 Choose three API calls and write their freshness requirement, cache owner, and invalidation trigger.
 
+## Full note will include
+
+- A cache ownership decision tree.
+- Bad-vs-good examples for freshness and invalidation answers.
+- A frontend system design checklist for loading, error, empty, and stale states.
+- A practice scenario for optimistic updates and rollback.
+- Common traps around duplicated server state and vague "just invalidate it" answers.
+
 ## Final mental model
 
 Caching is a promise about how wrong the UI is allowed to be, for how long, and what happens when the promise breaks.

@@ -2,11 +2,15 @@ import Link from "next/link";
 import type { NoteMeta } from "@/lib/notes";
 import { Badge } from "./Badge";
 
-export function NoteCard({ note }: { note: NoteMeta }) {
+export function NoteCard({ note, emphasis = false }: { note: NoteMeta; emphasis?: boolean }) {
   const isFree = note.status === "free";
 
   return (
-    <article className="rounded-lg border border-line bg-panel p-5 transition hover:border-mist/50">
+    <article
+      className={`rounded-lg border p-5 transition hover:border-mist/50 ${
+        emphasis ? "border-signal/50 bg-signal/10" : "border-line bg-panel"
+      }`}
+    >
       <div className="flex flex-wrap items-center gap-2">
         <Badge tone="accent">{note.track}</Badge>
         <Badge tone={isFree ? "free" : "locked"}>{isFree ? "Free" : "Locked"}</Badge>
@@ -18,7 +22,7 @@ export function NoteCard({ note }: { note: NoteMeta }) {
       </h2>
       <p className="mt-3 text-sm leading-6 text-muted">{note.summary}</p>
       <Link href={`/notes/${note.slug}`} className="mt-5 inline-flex text-sm font-semibold text-signal hover:text-white">
-        Read note
+        {isFree ? "Read complete sample" : "Read preview"}
       </Link>
     </article>
   );
