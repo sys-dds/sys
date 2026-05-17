@@ -11,10 +11,10 @@ export default function ChangelogPage() {
         <p className="text-sm font-semibold text-signal">MVP 0.1</p>
         <h2 className="mt-3 text-2xl font-bold text-white">Initial content-first launch</h2>
         <ul className="mt-5 space-y-3 text-sm leading-6 text-mist">
-          <li>Landing page, roadmap, notes index, pricing, about, and changelog pages.</li>
-          <li>Six MDX notes for frontend system design interview preparation.</li>
-          <li>Free notes render fully; locked notes show preview content and a paywall CTA.</li>
-          <li>Placeholder pricing links are wired through public environment variables.</li>
+          <li>MVP 0.1 created.</li>
+          <li>Frontend track started.</li>
+          <li>Static free/locked notes added.</li>
+          <li>£19 early access pricing placeholder added.</li>
         </ul>
       </section>
     </div>

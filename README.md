@@ -1,18 +1,47 @@
 # System Design Mastery
 
-MVP 0.1 for a content-first senior interview prep notes product.
+MVP 0.1 for a local static senior interview prep notes site.
 
-System Design Mastery helps 3+ year developers prepare for senior interviews by studying system design, frontend architecture, backend architecture, DevOps and production thinking, trade-offs, debugging, code review, and senior-style answers.
+## 1. Product Purpose
 
-## Stack
+System Design Mastery helps experienced developers prepare for senior interviews by learning how to explain trade-offs, design systems, review code, debug production issues, and answer with senior-level judgement.
+
+Main positioning:
+
+Senior interview prep for experienced developers who want to land senior roles, not by memorising answers, but by learning how senior engineers think.
+
+The first track is Frontend System Design for Senior Interviews.
+
+## 2. Audience
+
+Developers with 3+ years of experience who can already build software and want to prepare for senior frontend, full-stack, or architecture-heavy interview loops.
+
+This is not a beginner course and does not use fake guru claims.
+
+## 3. MVP Scope
+
+Included in MVP 0.1:
+
+- Landing page
+- Roadmap page
+- Notes index
+- MDX note detail pages
+- Free and locked preview logic
+- Pricing page with £19 Early Access placeholder
+- About page
+- Changelog page
+- Source-controlled MDX notes in `content/notes`
+
+## 4. Stack
 
 - Next.js App Router
 - TypeScript
 - Tailwind CSS
-- MDX files in `content/notes`
-- No database, auth, Stripe, Supabase, or real checkout integration
+- MDX content files
+- npm
+- Static/content-first architecture
 
-## Setup
+## 5. Setup Commands
 
 Install dependencies:
 
@@ -20,85 +49,79 @@ Install dependencies:
 npm install
 ```
 
-Run the development server:
+## 6. Local Dev Command
+
+Run the local development server:
 
 ```bash
 npm run dev
 ```
 
-Build for production:
+The app runs at:
+
+```text
+http://localhost:3000
+```
+
+## 7. Build Command
+
+Create a production build:
 
 ```bash
 npm run build
 ```
 
-Start a production build:
-
-```bash
-npm run start
-```
-
-Run linting when supported:
+Run linting:
 
 ```bash
 npm run lint
 ```
 
-## Environment Variables
+## 8. Local Testing Checklist
 
-Create a local env file from the example:
+Check these pages locally:
 
-```bash
-cp .env.example .env.local
-```
+- `/`
+- `/roadmap`
+- `/notes`
+- `/notes/frontend-server-vs-client-components`
+- `/notes/frontend-react-rendering-model`
+- `/pricing`
+- `/about`
+- `/changelog`
 
-Available placeholders:
+Expected behavior:
 
-```bash
-NEXT_PUBLIC_CORE_CHECKOUT_URL=
-NEXT_PUBLIC_PRO_CHECKOUT_URL=
-```
+- Notes index reads metadata from MDX frontmatter.
+- Free notes render full MDX content.
+- Locked notes render preview-only MDX content and show the Early Access CTA.
+- Pricing shows Free at £0 and Early Access at £19.
+- Early Access button says `Early Access coming soon` and does not connect to payment.
+- Layout is readable on mobile and desktop.
 
-The pricing page reads these variables for the Core and Pro buttons. Real Lemon Squeezy or Stripe integration is intentionally not included yet.
+## 9. What Is Intentionally Not Included Yet
 
-## Content
-
-Notes live in `content/notes` as MDX files with frontmatter:
-
-```yaml
-title: "Server vs Client Components"
-slug: "frontend-server-vs-client-components"
-track: "Frontend System Design"
-summary: "Short note summary"
-status: "free"
-order: 1
-```
-
-Free notes render the full MDX content. Locked notes render a useful preview and then show a paywall CTA. There is no auth gate in MVP 0.1.
-
-## Deployment Notes
-
-This app is deployable to any standard Next.js host such as Vercel. Add the public checkout URL placeholders in the hosting provider once real checkout links exist.
-
-## MVP Scope
-
-Included:
-
-- Landing page
-- Roadmap page with five tracks and a 30-day starter plan
-- Notes index generated from MDX metadata
-- MDX note pages with free and locked behavior
-- Pricing page with placeholder checkout URLs
-- About and changelog pages
-
-Intentionally not included yet:
-
+- Auth
 - Database
-- Authentication
-- Payments or subscriptions
+- Real payments
+- Stripe
 - Supabase
-- Admin dashboard
-- Comments or community
+- Lemon Squeezy
+- Subscriptions
+- Admin panel
+- Comments
+- Community features
+- AI features
+- Analytics
 - Search
 - Full LMS features
+- Cloudflare, Vercel, Netlify, DNS, or domain configuration
 
+## 10. Future Roadmap
+
+- SDM-002 content hardening and landing-page polish
+- SDM-003 paid download pack
+- SDM-004 real checkout link setup
+- SDM-005 deploy to Cloudflare Pages later
+- SDM-006 auth/gated dashboard later
+- SDM-007 backend/devops/system design tracks later

@@ -2,7 +2,7 @@
 title: "Data Fetching and Caching"
 slug: "frontend-data-fetching-caching"
 track: "Frontend System Design"
-summary: "A senior-friendly way to discuss freshness, latency, invalidation, optimistic UI, and cache ownership."
+summary: "A preview of how to discuss freshness, latency, invalidation, optimistic UI, and cache ownership."
 status: "locked"
 order: 5
 ---
@@ -15,38 +15,29 @@ Design data fetching for a project management app with dashboards, issue lists, 
 
 I would use React Query and cache the API responses. After mutations I would invalidate the queries so the UI updates.
 
-## Preview frame
-
-Caching is not only a library choice. It is a product decision about freshness, latency, consistency, and failure. The question to answer first is which data can be slightly stale, which data must be fresh, and which user actions need immediate feedback.
-
-Good answers name cache ownership: browser cache, framework cache, server cache, CDN, query cache, or local optimistic state.
-
 ## Senior answer
 
-I would classify data by freshness requirements. Dashboard aggregates can often tolerate short staleness and benefit from server or route-level caching. Issue detail and permissions may need fresher reads. Inline updates should use optimistic UI only where rollback is understandable and the failure mode is safe.
+Preview: I would start by classifying data by freshness requirements. Dashboard summaries can often tolerate short staleness. Issue details, permissions, and destructive actions need stricter freshness. Optimistic updates are useful only when rollback is clear and safe.
 
-For the client, I would use a query cache for user-specific, interactive data and define invalidation around domain events: issue updated, comment created, project settings changed. I would avoid duplicating the same entity in multiple local stores without a clear invalidation path.
+The full note will expand this into cache layers, invalidation events, server/client ownership, loading states, stale states, and failure behavior.
 
 ## Why this sounds senior
 
-It frames caching as a consistency and user-experience trade-off. It does not stop at naming a fetching library.
+It frames caching as a product and consistency trade-off, not only a library decision.
 
 ## Practical example
 
-A dashboard count can revalidate every minute. An issue title edit should update optimistically in the detail view and invalidate the issue list. Permission changes should avoid optimistic assumptions and refetch before exposing restricted actions.
+Preview: A dashboard count can revalidate occasionally, while an issue title edit may update optimistically and then refetch related list data.
 
 ## Checklist
 
 - Classify data by freshness needs.
 - Decide which layer owns each cache.
 - Define invalidation from domain events.
-- Use optimistic UI only with safe rollback.
-- Avoid duplicated entity state.
-- Show loading and stale states intentionally.
 
 ## Practice task
 
-Choose a page with three API calls. For each call, write the freshness requirement, cache owner, invalidation trigger, and failure behavior.
+Choose three API calls and write their freshness requirement, cache owner, and invalidation trigger.
 
 ## Final mental model
 

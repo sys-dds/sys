@@ -6,14 +6,17 @@ export function Hero() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-24">
         <div>
           <p className="mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-signal">
-            Senior interview prep notes
+            Frontend System Design for Senior Interviews
           </p>
           <h1 className="max-w-3xl text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-            Learn to answer system design like a senior engineer.
+            System Design Mastery
           </h1>
+          <p className="mt-5 max-w-2xl text-2xl font-semibold leading-9 text-white">
+            Senior interview prep for experienced developers who want to land senior roles.
+          </p>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-mist">
-            System Design Mastery helps 3+ year developers build judgement across frontend architecture, backend architecture,
-            production thinking, trade-offs, debugging, review, and senior-style communication.
+            Learn how to explain trade-offs, design systems, review code, debug production issues, and answer with
+            senior-level judgement.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
@@ -36,7 +39,7 @@ export function Hero() {
             {[
               "Architecture trade-offs, not memorized diagrams",
               "Senior answer patterns for ambiguous prompts",
-              "Frontend and backend system design notes",
+              "Frontend System Design as the first active track",
               "Production, debugging, and code review judgement",
             ].map((item) => (
               <div key={item} className="flex gap-3 border-b border-line/70 pb-4 last:border-0 last:pb-0">

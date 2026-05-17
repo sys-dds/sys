@@ -13,13 +13,21 @@ export default function AboutPage() {
           direct prompts, weak answers, stronger answers, trade-offs, examples, and checklists.
         </p>
         <p>
+          It is for experienced developers who can already build software and want to communicate with more senior-level
+          judgement in frontend architecture, system design, code review, debugging, and production conversations.
+        </p>
+        <p>
           The goal is not to sound like a guru or pretend every interview has one perfect architecture. The goal is to
           practice the judgement senior engineers are expected to show: clarify constraints, compare options, name risks,
           and explain decisions in plain language.
         </p>
         <p>
+          It is not a beginner course, and it is not fake expert content. The first track is Frontend System Design for
+          Senior Interviews, with other system design tracks planned later.
+        </p>
+        <p>
           MVP 0.1 is intentionally small. It focuses on content, structure, and useful reading paths before adding accounts,
-          payments, dashboards, search, or community features.
+          payments, dashboards, search, analytics, or community features.
         </p>
       </div>
     </div>

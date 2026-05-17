@@ -2,7 +2,7 @@
 title: "Frontend Interview Answer Patterns"
 slug: "frontend-interview-answer-patterns"
 track: "Senior Interview Answers"
-summary: "Structure frontend architecture answers so they show judgement, not just tool familiarity."
+summary: "A preview of how to structure frontend architecture answers so they show judgement, not just tool familiarity."
 status: "locked"
 order: 6
 ---
@@ -15,38 +15,29 @@ How do you answer an open-ended frontend architecture prompt without rambling or
 
 I would say what stack I prefer, describe the components I would build, and mention performance, accessibility, and testing if there is time.
 
-## Preview frame
-
-Open-ended prompts reward structure. A strong answer usually starts with constraints, user flows, data shape, rendering needs, state ownership, failure states, and trade-offs. Tools come later because tools only make sense after the problem is framed.
-
-The interviewer is listening for how you reduce ambiguity, not whether you can list every library you know.
-
 ## Senior answer
 
-I would use a repeatable answer shape: clarify the product goal, identify core user flows, define data boundaries, choose rendering and state strategies, discuss failure modes, then explain trade-offs and follow-up improvements.
+Preview: I would use a repeatable answer shape: clarify the product goal, identify core user flows, define data boundaries, choose rendering and state strategies, discuss failure modes, then explain trade-offs.
 
-For example, if asked to design a collaborative document editor, I would first ask about offline support, collaboration latency, permission rules, document size, conflict handling, and target platforms. Only then would I discuss local state, server synchronization, presence, optimistic updates, and observability.
+The full note will expand this into reusable answer patterns for frontend system design prompts, including how to move from requirements to architecture without sounding scripted.
 
 ## Why this sounds senior
 
-It shows that architecture is a sequence of decisions under constraints. The answer is easy to follow and gives the interviewer places to go deeper.
+It shows that architecture is a sequence of decisions under constraints. The answer gives the interviewer clear places to go deeper.
 
 ## Practical example
 
-For a notifications center: clarify volume and read/unread semantics, choose URL state for filters, use server data for notification lists, decide whether real-time updates are required, and explain how to handle stale counts.
+Preview: For a billing portal, clarify permissions, invoices, plan changes, payment failure states, and audit needs before choosing component or data-fetching patterns.
 
 ## Checklist
 
 - Clarify the product goal and constraints.
 - Name the highest-risk user flows.
-- Define data ownership and state ownership.
-- Explain rendering and loading strategy.
-- Include accessibility, failure, and observability.
-- Close with trade-offs and future improvements.
+- Explain trade-offs before naming tools.
 
 ## Practice task
 
-Answer this prompt in five minutes: "Design the frontend for a billing portal." Use the pattern above and avoid naming libraries until the second half.
+Answer this prompt in five minutes: "Design the frontend for a billing portal." Avoid naming libraries until the second half.
 
 ## Final mental model
 
