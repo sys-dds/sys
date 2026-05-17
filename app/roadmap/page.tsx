@@ -43,7 +43,7 @@ const starterPlan = [
 
 export default function RoadmapPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
         <SectionNumber number="01" label="Roadmap" />
         <h1 className="mt-4 text-4xl font-bold text-white">A practical path from feature builder to senior interview candidate.</h1>
@@ -57,7 +57,7 @@ export default function RoadmapPage() {
           <RoadmapCard key={track.title} {...track} />
         ))}
       </div>
-      <section className="mt-14 rounded-lg border border-line bg-panel p-6">
+      <section className="mt-10 rounded-lg border border-line bg-panel/80 p-5">
         <SectionNumber number="02" label="First 30 days" />
         <h2 className="text-2xl font-bold text-white">First 30 days</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">

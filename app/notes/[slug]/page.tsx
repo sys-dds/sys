@@ -40,7 +40,7 @@ export default async function NotePage({ params }: NotePageProps) {
   const { previous, next } = getAdjacentNotes(slug);
 
   return (
-    <CourseLayout notes={notes} activeSlug={slug}>
+    <CourseLayout notes={notes} activeSlug={note.slug}>
       <LessonLayout note={note}>
         <MDXRemote source={note.content} />
         {note.status === "locked" ? <PaywallBox /> : null}

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { SectionNumber } from "@/components/SectionNumber";
-import { ValueProofBlock } from "@/components/ValueProofBlock";
 
 const sections = [
   {
@@ -35,9 +34,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <SectionNumber number="02" label="Positioning" />
-        <div className="mt-8 divide-y divide-line border-y border-line">
+        <div className="mt-6 divide-y divide-line border-y border-line">
           {sections.map((section, index) => (
             <article key={section.title} className="grid gap-4 py-6 md:grid-cols-[5rem_0.8fr_1.2fr] md:items-start">
               <p className="font-mono text-sm text-muted">{String(index + 1).padStart(2, "0")}</p>
@@ -48,7 +47,7 @@ export default function HomePage() {
         </div>
       </section>
       <section className="border-y border-line bg-panel/30">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
           <div>
             <SectionNumber number="03" label="The problem" />
             <h2 className="mt-4 text-3xl font-bold leading-tight text-white">
@@ -69,7 +68,7 @@ export default function HomePage() {
         </div>
       </section>
       <section className="border-b border-line bg-panel/40">
-        <div className="mx-auto grid max-w-6xl gap-6 px-4 py-16 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+        <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
           <div>
             <SectionNumber number="04" label="Early Access" />
             <h2 className="mt-4 text-3xl font-bold leading-tight text-white">What £19 is buying.</h2>
@@ -86,9 +85,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <ValueProofBlock />
       <section className="border-b border-line bg-panel/20">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <SectionNumber number="05" label="Start the frontend track" />
             <h2 className="text-3xl font-bold text-white">Built as personal senior-interview study notes</h2>
