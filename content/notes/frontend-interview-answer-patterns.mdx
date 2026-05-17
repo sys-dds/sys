@@ -1,0 +1,53 @@
+---
+title: "Frontend Interview Answer Patterns"
+slug: "frontend-interview-answer-patterns"
+track: "Senior Interview Answers"
+summary: "Structure frontend architecture answers so they show judgement, not just tool familiarity."
+status: "locked"
+order: 6
+---
+
+## Interview question
+
+How do you answer an open-ended frontend architecture prompt without rambling or jumping straight to tools?
+
+## Weak answer
+
+I would say what stack I prefer, describe the components I would build, and mention performance, accessibility, and testing if there is time.
+
+## Preview frame
+
+Open-ended prompts reward structure. A strong answer usually starts with constraints, user flows, data shape, rendering needs, state ownership, failure states, and trade-offs. Tools come later because tools only make sense after the problem is framed.
+
+The interviewer is listening for how you reduce ambiguity, not whether you can list every library you know.
+
+## Senior answer
+
+I would use a repeatable answer shape: clarify the product goal, identify core user flows, define data boundaries, choose rendering and state strategies, discuss failure modes, then explain trade-offs and follow-up improvements.
+
+For example, if asked to design a collaborative document editor, I would first ask about offline support, collaboration latency, permission rules, document size, conflict handling, and target platforms. Only then would I discuss local state, server synchronization, presence, optimistic updates, and observability.
+
+## Why this sounds senior
+
+It shows that architecture is a sequence of decisions under constraints. The answer is easy to follow and gives the interviewer places to go deeper.
+
+## Practical example
+
+For a notifications center: clarify volume and read/unread semantics, choose URL state for filters, use server data for notification lists, decide whether real-time updates are required, and explain how to handle stale counts.
+
+## Checklist
+
+- Clarify the product goal and constraints.
+- Name the highest-risk user flows.
+- Define data ownership and state ownership.
+- Explain rendering and loading strategy.
+- Include accessibility, failure, and observability.
+- Close with trade-offs and future improvements.
+
+## Practice task
+
+Answer this prompt in five minutes: "Design the frontend for a billing portal." Use the pattern above and avoid naming libraries until the second half.
+
+## Final mental model
+
+Senior answers are not longer answers. They are ordered answers that make uncertainty visible and decisions traceable.

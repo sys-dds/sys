@@ -1,0 +1,67 @@
+import { RoadmapCard } from "@/components/RoadmapCard";
+
+const tracks = [
+  {
+    title: "Frontend System Design",
+    summary: "Design resilient client experiences, component boundaries, state ownership, rendering strategy, and API contracts.",
+    bullets: ["State placement", "Component APIs", "Rendering and caching"],
+  },
+  {
+    title: "Backend System Design",
+    summary: "Reason about APIs, data models, scaling constraints, reliability, queues, consistency, and failure modes.",
+    bullets: ["Data flow", "API shape", "Reliability trade-offs"],
+  },
+  {
+    title: "DevOps / Production",
+    summary: "Build the vocabulary for deployment, observability, incident thinking, capacity, and operational readiness.",
+    bullets: ["Monitoring", "Rollback plans", "Production debugging"],
+  },
+  {
+    title: "Senior Interview Answers",
+    summary: "Turn rough instincts into structured answers that show trade-offs, constraints, ownership, and judgement.",
+    bullets: ["Clarifying questions", "Option framing", "Decision narratives"],
+  },
+  {
+    title: "Code Review Judgement",
+    summary: "Learn how seniors review for behavior, maintainability, performance, risk, and team context.",
+    bullets: ["Risk spotting", "API review", "Maintainability language"],
+  },
+];
+
+const starterPlan = [
+  "Days 1-5: Server/client boundaries, state ownership, and component API design.",
+  "Days 6-10: Rendering model, data fetching, caching, and user-perceived performance.",
+  "Days 11-15: Backend APIs, data modeling, queues, consistency, and rate limits.",
+  "Days 16-20: Production basics, observability, rollback thinking, and debugging stories.",
+  "Days 21-25: Senior answer patterns, trade-off drills, and design walkthroughs.",
+  "Days 26-30: Mock prompts, code review judgement, and concise final answer practice.",
+];
+
+export default function RoadmapPage() {
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-signal">Roadmap</p>
+        <h1 className="mt-4 text-4xl font-bold text-white">A focused path from feature builder to senior interview candidate.</h1>
+        <p className="mt-5 text-base leading-8 text-muted">
+          Use these tracks to study architecture judgement without pretending every topic needs a full course.
+        </p>
+      </div>
+      <div className="mt-10 grid gap-5 md:grid-cols-2">
+        {tracks.map((track) => (
+          <RoadmapCard key={track.title} {...track} />
+        ))}
+      </div>
+      <section className="mt-14 rounded-lg border border-line bg-panel p-6">
+        <h2 className="text-2xl font-bold text-white">30-day starter plan</h2>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {starterPlan.map((item) => (
+            <div key={item} className="rounded-md border border-line bg-ink/40 p-4 text-sm leading-6 text-mist">
+              {item}
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
