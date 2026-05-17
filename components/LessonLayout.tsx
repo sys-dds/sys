@@ -3,7 +3,7 @@ import { Badge } from "./Badge";
 
 export function LessonLayout({ note, children }: { note: NoteMeta; children: React.ReactNode }) {
   return (
-    <article className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:px-8">
+    <article className="mx-auto max-w-3xl rounded-lg border border-line bg-ink/35 px-5 py-10 sm:px-8 lg:px-10">
       <div className="flex flex-wrap gap-2">
         <Badge tone="accent">{note.track}</Badge>
         <Badge tone={note.status === "free" ? "free" : "locked"}>{note.status === "free" ? "Free" : "Locked"}</Badge>

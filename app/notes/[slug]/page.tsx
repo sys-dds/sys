@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { CourseLayout } from "@/components/CourseLayout";
 import { LessonLayout } from "@/components/LessonLayout";
 import { PaywallBox } from "@/components/PaywallBox";
-import { getAllNoteSlugs, getNoteBySlug } from "@/lib/notes";
+import { PreviousNextNoteNav } from "@/components/PreviousNextNoteNav";
+import { getAdjacentNotes, getAllNotes, getAllNoteSlugs, getNoteBySlug } from "@/lib/notes";
 
 type NotePageProps = {
   params: Promise<{ slug: string }>;
@@ -34,10 +36,16 @@ export default async function NotePage({ params }: NotePageProps) {
     notFound();
   }
 
+  const notes = getAllNotes();
+  const { previous, next } = getAdjacentNotes(slug);
+
   return (
-    <LessonLayout note={note}>
-      <MDXRemote source={note.content} />
-      {note.status === "locked" ? <PaywallBox /> : null}
-    </LessonLayout>
+    <CourseLayout notes={notes} activeSlug={slug}>
+      <LessonLayout note={note}>
+        <MDXRemote source={note.content} />
+        {note.status === "locked" ? <PaywallBox /> : null}
+        <PreviousNextNoteNav previous={previous} next={next} />
+      </LessonLayout>
+    </CourseLayout>
   );
 }

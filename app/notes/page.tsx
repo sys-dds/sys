@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { NoteCard } from "@/components/NoteCard";
+import { Badge } from "@/components/Badge";
 import { getAllNotes } from "@/lib/notes";
 
 export const metadata = {
@@ -9,15 +11,48 @@ export default function NotesPage() {
   const notes = getAllNotes();
   const freeNotes = notes.filter((note) => note.status === "free");
   const lockedNotes = notes.filter((note) => note.status === "locked");
+  const firstNote = notes[0];
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
-      <div className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-signal">Notes</p>
-        <h1 className="mt-4 text-4xl font-bold text-white">Interview notes that teach answer quality.</h1>
-        <p className="mt-5 text-base leading-8 text-muted">
-          Free notes are complete samples. Locked notes are previews for the future Early Access pack.
-        </p>
+      <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+        <div className="max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-signal">Notes</p>
+          <h1 className="mt-4 text-4xl font-bold leading-tight text-white">Frontend System Design course notes.</h1>
+          <p className="mt-5 text-base leading-8 text-muted">
+            A structured interview-prep notebook, not a loose blog archive. Start with server/client boundaries, then move
+            through state ownership, component APIs, rendering, data fetching, and answer patterns.
+          </p>
+          <p className="mt-4 text-sm leading-6 text-mist">
+            Free notes are complete samples. Locked notes are previews for the future Early Access pack.
+          </p>
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            {firstNote ? (
+              <Link href={`/notes/${firstNote.slug}`} className="rounded-md bg-signal px-5 py-3 text-center text-sm font-bold text-ink">
+                Start first note
+              </Link>
+            ) : null}
+            <Link href="/pricing" className="rounded-md border border-line px-5 py-3 text-center text-sm font-bold text-white">
+              See £19 Early Access
+            </Link>
+          </div>
+        </div>
+        <aside className="rounded-lg border border-line bg-panel p-5">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-signal">Active track</p>
+          <h2 className="mt-3 text-2xl font-bold text-white">Frontend System Design</h2>
+          <ol className="mt-5 space-y-3 text-sm text-mist">
+            {notes.map((note) => (
+              <li key={note.slug} className="flex items-start justify-between gap-3 rounded-md border border-line/70 bg-ink/35 p-3">
+                <span>
+                  <span className="block font-semibold text-white">{note.order}. {note.title}</span>
+                  <span className="mt-2 block">
+                    <Badge tone={note.status === "free" ? "free" : "locked"}>{note.status === "free" ? "Free" : "Locked"}</Badge>
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ol>
+        </aside>
       </div>
       <section className="mt-10">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
@@ -47,7 +82,7 @@ export default function NotesPage() {
         </div>
         <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {lockedNotes.map((note) => (
-          <NoteCard key={note.slug} note={note} />
+            <NoteCard key={note.slug} note={note} />
           ))}
         </div>
       </section>

@@ -64,6 +64,23 @@ export function getAllNoteSlugs() {
   return getAllNotes().map((note) => note.slug);
 }
 
+export function getAdjacentNotes(slug: string) {
+  const notes = getAllNotes();
+  const currentIndex = notes.findIndex((note) => note.slug === slug);
+
+  if (currentIndex === -1) {
+    return {
+      previous: undefined,
+      next: undefined,
+    };
+  }
+
+  return {
+    previous: notes[currentIndex - 1],
+    next: notes[currentIndex + 1],
+  };
+}
+
 export function getNoteBySlug(slug: string): Note | undefined {
   return getNoteFiles()
     .map(parseNote)
