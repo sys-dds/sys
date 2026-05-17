@@ -15,10 +15,10 @@ export function CourseNavItem({ note, activeSlug }: CourseNavItemProps) {
     <Link
       href={`/notes/${note.slug}`}
       aria-current={isActive ? "page" : undefined}
-      className={`group flex items-center justify-between gap-3 border-l px-2.5 py-1.5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-signal/40 ${
+      className={`group relative -ml-3 flex items-center justify-between gap-3 px-3 py-1.5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-signal/40 ${
         isActive
-          ? "border-signal bg-signal/10 text-white"
-          : "border-transparent text-muted hover:border-line hover:bg-surface/60 hover:text-white"
+          ? "text-white before:absolute before:inset-y-1 before:left-0 before:w-px before:bg-signal"
+          : "text-muted hover:text-white"
       }`}
     >
       <span className="min-w-0 text-xs font-medium leading-5">{note.title}</span>

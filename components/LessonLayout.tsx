@@ -8,9 +8,9 @@ export function LessonLayout({ note, children }: { note: NoteMeta; children: Rea
         <Badge tone="accent">{note.track}</Badge>
         <Badge tone={note.status === "free" ? "free" : "locked"}>{note.status === "free" ? "Free" : "Locked"}</Badge>
       </div>
-      <h1 className="mt-5 text-4xl font-bold leading-tight text-white md:text-[2.75rem]">{note.title}</h1>
+      <h1 className="mt-5 text-4xl font-semibold leading-tight text-white md:text-[2.65rem]">{note.title}</h1>
       <p className="mt-4 max-w-3xl text-base leading-8 text-muted md:text-lg">{note.summary}</p>
-      <div className="mt-8 border-t border-line" />
+      <div className="mt-8 h-px bg-gradient-to-r from-signal/60 via-line to-transparent" />
       <div className="lesson-content mt-8">{children}</div>
     </article>
   );

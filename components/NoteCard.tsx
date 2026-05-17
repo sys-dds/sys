@@ -7,15 +7,15 @@ export function NoteCard({ note, emphasis = false }: { note: NoteMeta; emphasis?
 
   return (
     <article
-      className={`border p-4 transition hover:border-mist/50 ${
-        emphasis ? "border-signal/50 bg-signal/10" : "border-line bg-surface/55"
+      className={`group border-t pt-4 transition ${
+        emphasis ? "border-signal/60" : "border-line/70"
       }`}
     >
       <div className="flex flex-wrap items-center gap-2">
         <Badge tone="accent">{note.track}</Badge>
         <Badge tone={isFree ? "free" : "locked"}>{isFree ? "Free" : "Locked"}</Badge>
       </div>
-      <h2 className="mt-4 text-lg font-bold text-white">
+      <h2 className="mt-4 text-lg font-semibold text-white">
         <Link href={`/notes/${note.slug}`} className="hover:text-signal">
           {note.title}
         </Link>

@@ -11,10 +11,10 @@ function NoteLink({ note, direction }: { note: NoteMeta; direction: "Previous" |
   return (
     <Link
       href={`/notes/${note.slug}`}
-      className="block border-t border-line py-4 transition hover:border-mist/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-signal/40"
+      className="group block border-t border-line/70 py-4 transition hover:border-signal/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-signal/40"
     >
       <span className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">{direction}</span>
-      <span className="mt-1 block text-sm font-semibold text-white">{note.title}</span>
+      <span className="mt-1 block text-sm font-semibold text-white group-hover:text-signal">{note.title}</span>
       <span className="mt-2 block">
         <Badge tone={note.status === "free" ? "free" : "locked"}>{note.status === "free" ? "Free" : "Locked"}</Badge>
       </span>

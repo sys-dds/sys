@@ -31,14 +31,14 @@ export default function NotesPage() {
             <StartHereBlock firstNote={firstNote} />
           </div>
         </div>
-        <aside className="border border-line bg-surface/55 p-4">
+        <aside className="bg-gradient-to-b from-panel/55 to-transparent px-5 py-4 ring-1 ring-line/50">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-signal">Active track</p>
           <h2 className="mt-2 text-xl font-bold text-white">Frontend System Design</h2>
           <ol className="mt-4 space-y-1 text-sm text-mist">
             {notes.map((note) => (
-              <li key={note.slug} className="flex items-start justify-between gap-3 border-l border-line bg-ink/25 px-3 py-2">
+              <li key={note.slug} className="flex items-start justify-between gap-3 border-t border-line/60 py-2 first:border-t-0">
                 <span>
-                  <span className="block text-sm font-semibold text-white">{note.order}. {note.title}</span>
+                  <span className="block text-sm font-semibold text-white"><span className="mr-2 font-mono text-muted">{note.order}</span>{note.title}</span>
                   <span className="mt-1.5 block">
                     <Badge tone={note.status === "free" ? "free" : "locked"}>{note.status === "free" ? "Free" : "Locked"}</Badge>
                   </span>
@@ -48,11 +48,11 @@ export default function NotesPage() {
           </ol>
         </aside>
       </div>
-      <section className="mt-8 border-t border-line pt-7">
+      <section className="mt-10 border-t border-line/70 pt-7">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <SectionNumber number="02" label="Complete samples" />
-            <h2 className="mt-2 text-2xl font-bold text-white">Read these complete free samples first.</h2>
+            <h2 className="mt-2 text-2xl font-semibold text-white">Read these complete free samples first.</h2>
           </div>
           <p className="max-w-md text-sm leading-6 text-muted">
             They show the teaching pattern: question, weak answer, senior answer, checklist, practice task, mental model.
@@ -64,11 +64,11 @@ export default function NotesPage() {
           ))}
         </div>
       </section>
-      <section className="mt-8 border-t border-line pt-7">
+      <section className="mt-10 border-t border-line/70 pt-7">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <SectionNumber number="03" label="Early Access previews" />
-            <h2 className="mt-2 text-2xl font-bold text-white">See what Early Access will expand.</h2>
+            <h2 className="mt-2 text-2xl font-semibold text-white">See what Early Access will expand.</h2>
           </div>
           <p className="max-w-md text-sm leading-6 text-muted">
             Useful previews, not empty teasers. Full paid content is not included yet.
