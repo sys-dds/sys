@@ -14,7 +14,7 @@ type PricingCardProps = {
 
 export function PricingCard({ name, price, description, features, href, cta, featured, disabled }: PricingCardProps) {
   return (
-    <article className={`rounded-lg border p-6 ${featured ? "border-signal bg-signal/10" : "border-line bg-panel"}`}>
+    <article className={`rounded-lg border p-6 ${featured ? "border-signal bg-signal/10" : "border-line bg-panel/80"}`}>
       <div className="flex items-center justify-between gap-4">
         <h2 className="text-xl font-bold text-white">{name}</h2>
         {featured ? <Badge tone="free">Best start</Badge> : null}

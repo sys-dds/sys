@@ -1,4 +1,5 @@
 import { RoadmapCard } from "@/components/RoadmapCard";
+import { SectionNumber } from "@/components/SectionNumber";
 
 const tracks = [
   {
@@ -44,7 +45,7 @@ export default function RoadmapPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-signal">Roadmap</p>
+        <SectionNumber number="01" label="Roadmap" />
         <h1 className="mt-4 text-4xl font-bold text-white">A practical path from feature builder to senior interview candidate.</h1>
         <p className="mt-5 text-base leading-8 text-muted">
           The first track is active now. The rest stay visible so the product direction is clear without pretending the
@@ -57,6 +58,7 @@ export default function RoadmapPage() {
         ))}
       </div>
       <section className="mt-14 rounded-lg border border-line bg-panel p-6">
+        <SectionNumber number="02" label="First 30 days" />
         <h2 className="text-2xl font-bold text-white">First 30 days</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           A practical reading path for improving answer structure before adding more tracks.

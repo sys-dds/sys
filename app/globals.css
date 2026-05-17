@@ -19,7 +19,7 @@ body {
   margin: 0;
   background:
     radial-gradient(circle at 20% 0%, rgba(114, 225, 200, 0.08), transparent 32rem),
-    linear-gradient(180deg, #101317 0%, #12161b 42%, #0f1216 100%);
+    linear-gradient(180deg, #0d1014 0%, #12161b 42%, #0f1216 100%);
   color: #edf3f8;
 }
 
