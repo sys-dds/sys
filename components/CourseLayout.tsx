@@ -9,10 +9,12 @@ type CourseLayoutProps = {
 
 export function CourseLayout({ notes, activeSlug, children }: CourseLayoutProps) {
   return (
-    <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[20rem_minmax(0,1fr)] lg:px-8">
+    <div className="mx-auto grid max-w-[84rem] gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[16.25rem_minmax(0,52rem)] lg:gap-12 lg:px-8 lg:py-10">
       <div className="lg:hidden">
-        <details className="rounded-lg border border-line bg-panel p-4" open>
-          <summary className="cursor-pointer text-sm font-bold text-white">Course menu</summary>
+        <details className="border-y border-line bg-surface/50 py-3" open>
+          <summary className="cursor-pointer text-sm font-semibold text-white focus:outline-none focus-visible:text-signal">
+            Course menu
+          </summary>
           <div className="mt-4">
             <CourseSidebar notes={notes} activeSlug={activeSlug} />
           </div>

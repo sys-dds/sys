@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         ink: "#101317",
+        surface: "#0f1419",
         panel: "#171b21",
         line: "#2a313a",
         mist: "#d8e0ea",
