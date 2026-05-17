@@ -31,6 +31,7 @@ Included in MVP 0.1:
 - About page
 - Changelog page
 - Source-controlled MDX notes in `content/notes`
+- SDM-002 course/sidebar layout
 - SDM-002 conversion copy and content quality polish
 
 ## 4. Stack
@@ -86,6 +87,8 @@ Check these pages locally:
 - `/roadmap`
 - `/notes`
 - `/notes/frontend-server-vs-client-components`
+- `/notes/frontend-state-ownership`
+- `/notes/frontend-component-api-design`
 - `/notes/frontend-react-rendering-model`
 - `/pricing`
 - `/about`
@@ -96,6 +99,7 @@ Expected behavior:
 - Notes index reads metadata from MDX frontmatter.
 - Free notes render full MDX content.
 - Locked notes render preview-only MDX content and show the Early Access CTA.
+- Note detail pages show course sidebar navigation, active note state, free/locked badges, and previous/next navigation.
 - Pricing shows Free at £0 and Early Access at £19.
 - Early Access button says `Early Access coming soon` and does not connect to payment.
 - Layout is readable on mobile and desktop.
@@ -120,7 +124,7 @@ Expected behavior:
 
 ## 10. Future Roadmap
 
-- SDM-003 paid download pack
+- SDM-003 gated web access foundation later
 - SDM-004 real checkout link setup
 - SDM-005 deploy to Cloudflare Pages later
 - SDM-006 auth/gated dashboard later
@@ -128,6 +132,6 @@ Expected behavior:
 
 ## Current Status
 
-SDM-002 improves homepage conversion copy, pricing value framing, note index guidance, free-note quality, and locked-preview quality.
+SDM-002 adds the course/sidebar layout and improves homepage conversion copy, pricing value framing, note index guidance, free-note quality, and locked-preview quality.
 
-The app still intentionally excludes auth, database, payments, deployment setup, analytics, and subscriptions.
+The app still intentionally excludes auth, database, payments, deployment setup, analytics, search, and subscriptions.

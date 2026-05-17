@@ -37,9 +37,11 @@ a {
 }
 
 .lesson-content h2 {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+  border-top: 1px solid #2a313a;
+  padding-top: 1.5rem;
   color: #f4f7fb;
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   font-weight: 700;
   letter-spacing: 0;
 }
@@ -52,8 +54,8 @@ a {
 }
 
 .lesson-content p {
-  margin-top: 1rem;
-  line-height: 1.75;
+  margin-top: 1.1rem;
+  line-height: 1.85;
 }
 
 .lesson-content ul,
@@ -63,8 +65,8 @@ a {
 }
 
 .lesson-content li {
-  margin-top: 0.5rem;
-  line-height: 1.7;
+  margin-top: 0.6rem;
+  line-height: 1.75;
 }
 
 .lesson-content strong {

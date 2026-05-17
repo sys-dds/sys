@@ -19,14 +19,15 @@ export default function ChangelogPage() {
       </section>
       <section className="mt-6 rounded-lg border border-line bg-panel p-6">
         <p className="text-sm font-semibold text-signal">SDM-002</p>
-        <h2 className="mt-3 text-2xl font-bold text-white">Content hardening and conversion polish</h2>
+        <h2 className="mt-3 text-2xl font-bold text-white">Course layout and conversion polish</h2>
         <ul className="mt-5 space-y-3 text-sm leading-6 text-mist">
-          <li>SDM-002 content hardening started and completed.</li>
+          <li>SDM-002 sidebar/course layout added.</li>
+          <li>SDM-002 conversion copy improved.</li>
           <li>Homepage copy sharpened around the senior interview gap and £19 value.</li>
           <li>Pricing copy improved with a clearer Early Access value frame.</li>
           <li>Free notes strengthened as complete product samples.</li>
           <li>Locked previews improved with clearer future unlocks.</li>
-          <li>No auth, database, or payments added.</li>
+          <li>No auth, database, payments, or deployment added.</li>
         </ul>
       </section>
     </div>
