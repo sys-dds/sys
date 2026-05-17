@@ -9,7 +9,7 @@ type PreviousNextNoteNavProps = {
 
 function NoteLink({ note, direction }: { note: NoteMeta; direction: "Previous" | "Next" }) {
   return (
-    <Link href={`/notes/${note.slug}`} className="rounded-lg border border-line bg-panel p-4 transition hover:border-mist/50">
+    <Link href={`/notes/${note.slug}`} className="rounded-lg border border-line bg-panel/80 p-4 transition hover:border-mist/50 focus:outline-none focus:ring-2 focus:ring-line">
       <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">{direction}</span>
       <span className="mt-2 block text-base font-bold text-white">{note.title}</span>
       <span className="mt-3 block">

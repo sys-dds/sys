@@ -1,29 +1,30 @@
 import Link from "next/link";
 import { SectionNumber } from "./SectionNumber";
+import { CoursePreviewPanel } from "./CoursePreviewPanel";
 
 export function Hero() {
   return (
     <section className="border-b border-line">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-24">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[1fr_0.95fr] lg:items-start lg:px-8 lg:py-16">
         <div>
           <SectionNumber number="01" label="Frontend System Design for Senior Interviews" />
-          <h1 className="max-w-3xl text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight text-white sm:text-5xl">
             Senior interview prep for experienced developers.
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-mist">
+          <p className="mt-5 max-w-2xl text-base leading-8 text-mist sm:text-lg">
             Learn how to explain trade-offs, design systems, review code, debug production issues, and answer with
             senior-level judgement.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Link
-              href="/roadmap"
-              className="inline-flex items-center justify-center rounded-md bg-signal px-5 py-3 text-sm font-bold text-ink transition hover:bg-signal/90"
+              href="/notes"
+              className="inline-flex items-center justify-center rounded-md bg-signal px-5 py-3 text-sm font-bold text-ink transition hover:bg-signal/90 focus:outline-none focus:ring-2 focus:ring-signal/50"
             >
-              Start with the roadmap
+              Start the track
             </Link>
             <Link
               href="/pricing"
-              className="inline-flex items-center justify-center rounded-md border border-line px-5 py-3 text-sm font-bold text-white transition hover:border-mist/60"
+              className="inline-flex items-center justify-center rounded-md border border-line px-5 py-3 text-sm font-bold text-white transition hover:border-mist/60 hover:bg-panel focus:outline-none focus:ring-2 focus:ring-line"
             >
               See £19 Early Access
             </Link>
@@ -32,22 +33,7 @@ export function Hero() {
             If one answer helps you sound more senior in an interview, the £19 has already paid for itself.
           </p>
         </div>
-        <div className="rounded-lg border border-line bg-panel/80 p-6 lg:mt-4">
-          <p className="text-sm font-semibold text-muted">What changes in your answers</p>
-          <div className="mt-5 space-y-4">
-            {[
-              "Move from tool lists to trade-off reasoning",
-              "Explain decisions under ambiguous interview prompts",
-              "Use checklists to avoid shallow architecture answers",
-              "Talk about production, debugging, and review judgement",
-            ].map((item) => (
-              <div key={item} className="flex gap-3 border-b border-line/70 pb-4 last:border-0 last:pb-0">
-                <span className="mt-1 h-2 w-2 rounded-full bg-signal" />
-                <p className="text-sm leading-6 text-mist">{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <CoursePreviewPanel />
       </div>
     </section>
   );

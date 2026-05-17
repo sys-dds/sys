@@ -15,7 +15,7 @@ export default function NotesPage() {
   const firstNote = notes[0];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
         <div className="max-w-3xl">
           <SectionNumber number="01" label="Course entry" />
@@ -31,7 +31,7 @@ export default function NotesPage() {
             <StartHereBlock firstNote={firstNote} />
           </div>
         </div>
-        <aside className="rounded-lg border border-line bg-panel p-5">
+        <aside className="rounded-lg border border-line bg-panel/80 p-5">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-signal">Active track</p>
           <h2 className="mt-3 text-2xl font-bold text-white">Frontend System Design</h2>
           <ol className="mt-5 space-y-3 text-sm text-mist">
@@ -48,7 +48,7 @@ export default function NotesPage() {
           </ol>
         </aside>
       </div>
-      <section className="mt-10">
+      <section className="mt-10 border-t border-line pt-8">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <SectionNumber number="02" label="Complete samples" />
@@ -64,7 +64,7 @@ export default function NotesPage() {
           ))}
         </div>
       </section>
-      <section className="mt-14">
+      <section className="mt-10 border-t border-line pt-8">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <SectionNumber number="03" label="Early Access previews" />

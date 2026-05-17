@@ -4,7 +4,7 @@
 
 :root {
   color-scheme: dark;
-  background: #101317;
+  background: #0b0e12;
 }
 
 * {
@@ -18,8 +18,8 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 20% 0%, rgba(114, 225, 200, 0.08), transparent 32rem),
-    linear-gradient(180deg, #0d1014 0%, #12161b 42%, #0f1216 100%);
+    radial-gradient(circle at 22% 0%, rgba(114, 225, 200, 0.055), transparent 28rem),
+    linear-gradient(180deg, #0b0e12 0%, #10141a 44%, #0c0f13 100%);
   color: #edf3f8;
 }
 
@@ -37,11 +37,11 @@ a {
 }
 
 .lesson-content h2 {
-  margin-top: 2.5rem;
+  margin-top: 2.25rem;
   border-top: 1px solid #2a313a;
   padding-top: 1.5rem;
   color: #f4f7fb;
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: 0;
 }

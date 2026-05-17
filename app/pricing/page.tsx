@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function PricingPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
         <SectionNumber number="01" label="Pricing" />
         <h1 className="mt-4 text-4xl font-bold text-white">Start free. Join Early Access when the deeper pack is ready.</h1>
@@ -16,7 +16,7 @@ export default function PricingPage() {
           has already paid for itself.
         </p>
       </div>
-      <div className="mt-10 grid gap-5 lg:grid-cols-2">
+      <div className="mt-8 grid gap-5 lg:grid-cols-2">
         <PricingCard
           name="Free"
           price="£0"
@@ -48,7 +48,7 @@ export default function PricingPage() {
       <p className="mt-8 max-w-3xl text-sm leading-6 text-ember">
         Price increases as more notes, examples, checklists, and practice tasks are added.
       </p>
-      <section className="mt-10 rounded-lg border border-line bg-panel p-6">
+      <section className="mt-8 rounded-lg border border-line bg-panel/80 p-6">
         <SectionNumber number="02" label="Value proof" />
         <h2 className="text-2xl font-bold text-white">Why £19?</h2>
         <p className="mt-4 max-w-3xl text-base leading-8 text-mist">

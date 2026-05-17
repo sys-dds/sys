@@ -6,7 +6,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
       <SectionNumber number="01" label="About" />
       <h1 className="mt-4 text-4xl font-bold text-white">A personal study system turned into a practical product.</h1>
       <div className="mt-8 space-y-5 border-y border-line py-8 text-base leading-8 text-mist">

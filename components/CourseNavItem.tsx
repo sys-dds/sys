@@ -15,7 +15,7 @@ export function CourseNavItem({ note, activeSlug }: CourseNavItemProps) {
     <Link
       href={`/notes/${note.slug}`}
       aria-current={isActive ? "page" : undefined}
-      className={`block rounded-md border px-3 py-3 transition ${
+      className={`block rounded-md border px-3 py-2.5 transition focus:outline-none focus:ring-2 focus:ring-line ${
         isActive
           ? "border-signal bg-signal/10 text-white"
           : "border-transparent text-muted hover:border-line hover:bg-ink/50 hover:text-white"

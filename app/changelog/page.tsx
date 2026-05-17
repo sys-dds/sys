@@ -6,7 +6,7 @@ export const metadata = {
 
 export default function ChangelogPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
       <SectionNumber number="01" label="Changelog" />
       <h1 className="mt-4 text-4xl font-bold text-white">Launch notes</h1>
       <section className="mt-10 border-y border-line py-6">
