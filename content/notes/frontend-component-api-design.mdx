@@ -1,0 +1,47 @@
+---
+title: "Component API Design"
+slug: "frontend-component-api-design"
+track: "Frontend System Design"
+summary: "Design component props that stay flexible without becoming vague or impossible to maintain."
+status: "free"
+order: 3
+---
+
+## Interview question
+
+How would you design a reusable modal, table, or card component for a growing product team?
+
+## Weak answer
+
+I would make it reusable by adding props for all the options designers might need. If a new use case appears, I would add another prop.
+
+## Senior answer
+
+I would design the API around stable responsibilities, not every possible visual variation. A modal should own accessibility, focus management, escape behavior, layout constraints, and close semantics. The caller should own the title, content, primary action, and domain-specific copy. For complex components, I would prefer composition when the use cases are structurally different, and explicit props when the variations are small and well-defined.
+
+I would also decide which props are controlled, which have defaults, and which combinations are invalid. A senior component API makes correct usage easy and awkward usage visible.
+
+## Why this sounds senior
+
+It talks about responsibility boundaries, invalid states, accessibility, and future change. It avoids making reusability mean "add more props forever."
+
+## Practical example
+
+A `Dialog` can expose `open`, `onOpenChange`, `title`, `description`, and children for body content. It should not accept many one-off props like `isBillingDialog`, `showDangerSpacing`, or `specialHeaderMode`. If those appear, the team may need a domain wrapper such as `CancelPlanDialog`.
+
+## Checklist
+
+- Name the responsibility the component owns.
+- Keep domain rules outside generic primitives.
+- Prefer composition for large structural variation.
+- Make controlled state explicit.
+- Prevent invalid prop combinations where possible.
+- Include accessibility behavior in the component contract.
+
+## Practice task
+
+Take a component with more than ten props. Group the props by responsibility, then identify which should become composition, defaults, or a domain wrapper.
+
+## Final mental model
+
+A good component API is a small agreement. It tells callers what they control, what the component guarantees, and where domain-specific behavior belongs.

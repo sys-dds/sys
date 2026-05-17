@@ -1,0 +1,46 @@
+---
+title: "Frontend State Ownership"
+slug: "frontend-state-ownership"
+track: "Frontend System Design"
+summary: "A practical model for deciding whether state belongs in URL, server cache, parent components, or local UI."
+status: "free"
+order: 2
+---
+
+## Interview question
+
+You are building a complex product page with filters, tabs, forms, and fetched data. Where should different pieces of state live?
+
+## Weak answer
+
+I would put shared state in a global store and local state in components. If it gets complicated, I would use Redux or Zustand.
+
+## Senior answer
+
+I would decide based on who needs to read the state, who owns changes to it, and whether it should survive refresh or navigation. State that represents navigation or shareable views belongs in the URL, such as filters, selected tabs, and pagination. Server-derived data belongs in the server cache or data-fetching layer. Form drafts usually belong near the form until they are submitted. Tiny visual state, like a dropdown being open, should stay local.
+
+I would reach for global client state only when multiple distant parts of the tree need coordinated updates that are not already represented by URL or server data.
+
+## Why this sounds senior
+
+It avoids choosing a library before defining ownership. The answer explains persistence, sharing, synchronization, and blast radius. It also shows restraint: global state is a tool, not a default.
+
+## Practical example
+
+For an issue tracker, query text, status filter, assignee, and page number should live in the URL. The issue list should come from the server or query cache. The inline edit draft should live in the row or form. A sidebar collapse preference might live in local storage if it should persist for that user.
+
+## Checklist
+
+- Put shareable navigation state in the URL.
+- Keep fetched entities in the data layer, not duplicated in component state.
+- Keep temporary form drafts close to the form.
+- Use global client state only for genuinely shared client concerns.
+- Avoid syncing the same fact across multiple state owners.
+
+## Practice task
+
+Pick a screen with at least five pieces of state. Label each as URL, server data, local component state, global client state, or persistent preference.
+
+## Final mental model
+
+State should live with the system that can explain its lifetime. If you cannot name the owner, bugs will eventually choose one for you.

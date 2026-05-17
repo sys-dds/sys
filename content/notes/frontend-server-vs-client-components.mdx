@@ -1,0 +1,46 @@
+---
+title: "Server vs Client Components"
+slug: "frontend-server-vs-client-components"
+track: "Frontend System Design"
+summary: "Learn how to explain server/client component boundaries without reducing the answer to performance slogans."
+status: "free"
+order: 1
+---
+
+## Interview question
+
+You are designing a dashboard in Next.js. Which parts should be Server Components, which parts should be Client Components, and why?
+
+## Weak answer
+
+I would use Server Components for performance and Client Components whenever I need interactivity. Server Components are faster because they render on the server.
+
+## Senior answer
+
+I would start by separating data access, stable layout, and interactive state. The dashboard shell, navigation, static summary sections, and data-loaded cards are good Server Component candidates because they can fetch close to the data source and avoid shipping unnecessary JavaScript. The filters, date picker, chart controls, optimistic actions, and any stateful widgets should be Client Components because they need browser state and event handlers.
+
+The boundary should sit where the data becomes interactive. I would keep the server side responsible for fetching and shaping data, then pass serializable props into small client islands. That keeps the client bundle smaller and makes the data flow easier to reason about.
+
+## Why this sounds senior
+
+It names boundaries, trade-offs, and ownership. It does not treat Server Components as magic. It explains what stays on the server, what moves to the client, and why the boundary matters for bundle size, data access, and maintainability.
+
+## Practical example
+
+A billing dashboard can render the account summary, invoices list, and plan details as Server Components. The invoice table filters, export button, and plan-change modal can be Client Components. The modal should receive the minimum data it needs rather than importing server-only code.
+
+## Checklist
+
+- Keep data fetching and server-only libraries out of Client Components.
+- Put event handlers, browser APIs, and local state in Client Components.
+- Pass serializable props across the boundary.
+- Prefer small client islands over making the whole page a Client Component.
+- Check whether a boundary improves clarity, not only performance.
+
+## Practice task
+
+Take a page you have built recently and mark each component as server, client, or either. Then explain one boundary you would change and the trade-off it creates.
+
+## Final mental model
+
+Server Components own data and stable UI. Client Components own interaction. Senior judgement is choosing the smallest boundary that keeps both sides understandable.

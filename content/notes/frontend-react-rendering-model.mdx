@@ -1,0 +1,53 @@
+---
+title: "React Rendering Model"
+slug: "frontend-react-rendering-model"
+track: "Frontend System Design"
+summary: "Explain render, commit, memoization, and performance trade-offs in a way that sounds precise."
+status: "locked"
+order: 4
+---
+
+## Interview question
+
+A React page feels slow after a user changes filters. How do you reason about what is re-rendering and what to optimize?
+
+## Weak answer
+
+I would add `memo`, `useMemo`, and `useCallback` to stop unnecessary renders. React re-renders too much sometimes, so memoization usually helps.
+
+## Preview frame
+
+The useful starting point is to separate render work from commit work and then ask what changed. A render is React calculating the next UI. A commit is React applying the result to the host environment. Not every render is a bug, and not every memoization improves the page.
+
+Before optimizing, identify whether the issue is expensive calculation, too much component work, slow DOM updates, network delay, layout work, or a blocking interaction.
+
+## Senior answer
+
+I would profile the interaction first and avoid assuming every render is harmful. I would look for which state update starts the render, which subtree is affected, and whether the expensive work is calculation, reconciliation, commit, browser layout, or data fetching.
+
+Then I would reduce the amount of work at the right level. If state is too high, I would move it closer to the components that need it. If a list is large, I would consider virtualization or pagination. If derived data is expensive, I would memoize the calculation. If child components re-render because callback identities change and they are genuinely expensive, I would use memoization with measurements.
+
+## Why this sounds senior
+
+It treats React performance as a diagnosis problem, not a ritual. It names the render pipeline and distinguishes optimization techniques by cause.
+
+## Practical example
+
+On a filtered activity feed, the bottleneck might be recomputing grouped rows on every keystroke. The right fix could be debouncing input, moving draft state local to the filter box, memoizing the grouped result, or moving filtering to the server once data size grows.
+
+## Checklist
+
+- Profile before changing code.
+- Find the state update that starts the work.
+- Distinguish render cost, commit cost, data cost, and layout cost.
+- Move state down when broad re-renders are unnecessary.
+- Memoize expensive derived values, not every value.
+- Use virtualization for large visible lists.
+
+## Practice task
+
+Pick a slow interaction and write three hypotheses before changing code. For each hypothesis, name the measurement that would prove or disprove it.
+
+## Final mental model
+
+Rendering is work, but work is not automatically waste. Senior React performance starts by locating the cause, then choosing the smallest optimization that attacks that cause.
